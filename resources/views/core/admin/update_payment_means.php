@@ -7,7 +7,6 @@ include('configs/codeGen.php');
 check_login();
 
 if (isset($_POST['update'])) {
-
     $update = $_GET['update'];
     $method_name = $_POST['method_name'];
     $method_code = $_POST['method_code'];
@@ -33,7 +32,7 @@ require_once('partials/_head.php');
     <!--  BEGIN NAVBAR  -->
     <?php
     require_once('partials/_nav.php');
-    ?>
+?>
     <!--  END NAVBAR  -->
 
     <!--  BEGIN NAVBAR  -->
@@ -73,14 +72,14 @@ require_once('partials/_head.php');
 
         <!--  BEGIN SIDEBAR  -->
         <?php
-        require_once('partials/_sidebar.php');
-        $update = $_GET['update'];
-        $ret = "SELECT * FROM `payment_methods`  WHERE method_id = '$update' ";
-        $stmt = $mysqli->prepare($ret);
-        $stmt->execute(); //ok
-        $res = $stmt->get_result();
-        while ($row = $res->fetch_object()) {
-        ?>
+    require_once('partials/_sidebar.php');
+$update = $_GET['update'];
+$ret = "SELECT * FROM `payment_methods`  WHERE method_id = '$update' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
 
             <!--  BEGIN CONTENT AREA  -->
             <div id="content" class="main-content">
@@ -114,9 +113,9 @@ require_once('partials/_head.php');
                     </div>
                 </div>
             <?php
-            require_once('partials/_footer.php');
-        }
-            ?>
+        require_once('partials/_footer.php');
+}
+?>
             </div>
             <!--  END CONTENT AREA  -->
     </div>
@@ -124,7 +123,7 @@ require_once('partials/_head.php');
 
     <?php
     require_once('partials/_scripts.php');
-    ?>
+?>
 </body>
 
 </html>

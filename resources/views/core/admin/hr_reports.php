@@ -77,11 +77,11 @@ require_once('partials/_head.php');
                                     <tbody>
                                         <?php
                                         $ret = "SELECT * FROM `medical_experts` ";
-                                        $stmt = $mysqli->prepare($ret);
-                                        $stmt->execute(); //ok
-                                        $res = $stmt->get_result();
-                                        while ($row = $res->fetch_object()) {
-                                        ?>
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                             <tr>
                                                 <td>
                                                     <a class="badge outline-badge-success" href="view_doc.php?view=<?php echo $row->doc_id; ?>">
@@ -93,17 +93,17 @@ require_once('partials/_head.php');
                                                 <td><?php echo $row->doc_phone; ?></td>
                                                 <td>
                                                     <?php
-                                                    if ($row->doc_status == 'Pending') {
-                                                        echo "<span class='badge outline-badge-danger'>$row->doc_status</span>";
-                                                    } else {
-                                                        echo "<span class='badge outline-badge-success'>$row->doc_status</span>";
-                                                    }
-                                                    ?>
+                if ($row->doc_status == 'Pending') {
+                    echo "<span class='badge outline-badge-danger'>$row->doc_status</span>";
+                } else {
+                    echo "<span class='badge outline-badge-success'>$row->doc_status</span>";
+                }
+    ?>
                                                 </td>
 
                                             </tr>
                                         <?php
-                                        } ?>
+} ?>
 
                                     </tbody>
                                 </table>

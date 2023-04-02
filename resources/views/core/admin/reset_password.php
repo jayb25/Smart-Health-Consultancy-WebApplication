@@ -4,7 +4,6 @@ include('configs/config.php');
 include('configs/codeGen.php');
 
 if (isset($_POST['reset-password'])) {
-
     $email = $_POST['email'];
     $token = $_POST['token'];
 

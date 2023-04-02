@@ -50,37 +50,37 @@ require_once('partials/_head.php');
         <?php
         require_once('partials/_sidebar.php');
 
-        $view = $_GET['view'];
-        $ret = "SELECT * FROM `prescriptions`  WHERE pre_id = '$view' ";
+$view = $_GET['view'];
+$ret = "SELECT * FROM `prescriptions`  WHERE pre_id = '$view' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($prescriptions = $res->fetch_object()) {
+    $consID = $prescriptions->consul_id;
+
+    //Nest Fetch
+    $ret = "SELECT * FROM `consultations`  WHERE consul_id = '$consID' ";
+    $stmt = $mysqli->prepare($ret);
+    $stmt->execute(); //ok
+    $res = $stmt->get_result();
+    while ($consultation = $res->fetch_object()) {
+        $doc = $consultation->doc_id;
+        $client = $consultation->member_id;
+
+        //Nest Doctors Fetch
+        $ret = "SELECT * FROM `medical_experts`  WHERE doc_id = '$doc' ";
         $stmt = $mysqli->prepare($ret);
         $stmt->execute(); //ok
         $res = $stmt->get_result();
-        while ($prescriptions = $res->fetch_object()) {
-            $consID = $prescriptions->consul_id;
+        while ($doctor = $res->fetch_object()) {
+            //Nest Clients
 
-            //Nest Fetch
-            $ret = "SELECT * FROM `consultations`  WHERE consul_id = '$consID' ";
+            $ret = "SELECT * FROM `members`  WHERE  member_id = '$client' ";
             $stmt = $mysqli->prepare($ret);
             $stmt->execute(); //ok
             $res = $stmt->get_result();
-            while ($consultation = $res->fetch_object()) {
-                $doc = $consultation->doc_id;
-                $client = $consultation->member_id;
-
-                //Nest Doctors Fetch
-                $ret = "SELECT * FROM `medical_experts`  WHERE doc_id = '$doc' ";
-                $stmt = $mysqli->prepare($ret);
-                $stmt->execute(); //ok
-                $res = $stmt->get_result();
-                while ($doctor = $res->fetch_object()) {
-                    //Nest Clients
-
-                    $ret = "SELECT * FROM `members`  WHERE  member_id = '$client' ";
-                    $stmt = $mysqli->prepare($ret);
-                    $stmt->execute(); //ok
-                    $res = $stmt->get_result();
-                    while ($user = $res->fetch_object()) {
-        ?>
+            while ($user = $res->fetch_object()) {
+                ?>
                         <!--  END SIDEBAR  -->
 
                         <!--  BEGIN CONTENT AREA  -->
@@ -99,11 +99,11 @@ require_once('partials/_head.php');
                                                 </div>
                                                 <div class="text-center user-info">
                                                     <?php
-                                                    if ($user->member_pic == '') {
-                                                        echo "<img src='../admin/assets/img/admin/admin.png' class='img-thumbnail img-fluid' alt='avatar'>";
-                                                    } else {
-                                                        echo "<img src='../admin/assets/img/clients/$user->member_pic' class='img-thumbnail img-fluid' alt='avatar'>";
-                                                    } ?>
+                                                            if ($user->member_pic == '') {
+                                                                echo "<img src='../admin/assets/img/admin/admin.png' class='img-thumbnail img-fluid' alt='avatar'>";
+                                                            } else {
+                                                                echo "<img src='../admin/assets/img/clients/$user->member_pic' class='img-thumbnail img-fluid' alt='avatar'>";
+                                                            } ?>
                                                     <p class=""><?php echo $user->member_name; ?></p>
                                                 </div>
                                                 <div class="user-info-list">
@@ -243,10 +243,10 @@ require_once('partials/_head.php');
     </div>
 <?php
                         require_once('partials/_scripts.php');
-                    }
-                }
             }
-        } ?>
+        }
+    }
+} ?>
 </body>
 
 </html>

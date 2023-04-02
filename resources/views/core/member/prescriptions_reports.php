@@ -74,12 +74,12 @@ require_once('partials/_head.php');
                                     <tbody>
                                     <?php
                                         $member_id = $_SESSION['member_id'];
-                                        $ret = "SELECT * FROM `prescriptions` WHERE member_id = '$member_id' ";
-                                        $stmt = $mysqli->prepare($ret);
-                                        $stmt->execute(); //ok
-                                        $res = $stmt->get_result();
-                                        while ($row = $res->fetch_object()) {
-                                        ?>
+$ret = "SELECT * FROM `prescriptions` WHERE member_id = '$member_id' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                             <tr>
                                                 <td>
                                                     <a class="badge outline-badge-success" href="view_prescription.php?view=<?php echo $row->pre_id; ?>">
@@ -90,7 +90,7 @@ require_once('partials/_head.php');
                                                 <td><?php echo date('d M Y g:i', strtotime($row->created_at)); ?></td>
                                             </tr>
                                         <?php
-                                        } ?>
+} ?>
                                     </tbody>
                                 </table>
                             </div>

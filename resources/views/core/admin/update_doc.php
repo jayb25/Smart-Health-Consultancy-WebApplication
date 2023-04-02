@@ -8,7 +8,6 @@ check_login();
 
 //Update Medical Expert
 if (isset($_POST['update_doc'])) {
-
     $update = $_GET['update'];
     $doc_number = $_POST['doc_number'];
     $doc_name = $_POST['doc_name'];
@@ -24,7 +23,7 @@ if (isset($_POST['update_doc'])) {
     $rc = $stmt->bind_param('ssssssss', $doc_number, $doc_name, $doc_email, $doc_phone, $doc_bio, $doc_status, $doc_photo, $update);
     $stmt->execute();
     if ($stmt) {
-        //inject alert that post is shared  
+        //inject alert that post is shared
         $success = "Updated" && header("refresh:1; url=manage_docs.php");
     } else {
         //inject alert that task failed
@@ -41,7 +40,7 @@ require_once('partials/_head.php');
     <!--  BEGIN NAVBAR  -->
     <?php
     require_once('partials/_nav.php');
-    ?>
+?>
     <!--  END NAVBAR  -->
 
     <!--  BEGIN NAVBAR  -->
@@ -80,14 +79,14 @@ require_once('partials/_head.php');
 
         <!--  BEGIN SIDEBAR  -->
         <?php
-        require_once('partials/_sidebar.php');
-        $update = $_GET['update'];
-        $ret = "SELECT * FROM `medical_experts` WHERE doc_id ='$update' ";
-        $stmt = $mysqli->prepare($ret);
-        $stmt->execute(); //ok
-        $res = $stmt->get_result();
-        while ($row = $res->fetch_object()) {
-        ?>
+    require_once('partials/_sidebar.php');
+$update = $_GET['update'];
+$ret = "SELECT * FROM `medical_experts` WHERE doc_id ='$update' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
             <!--  END SIDEBAR  -->
 
             <!--  BEGIN CONTENT AREA  -->
@@ -139,9 +138,9 @@ require_once('partials/_head.php');
                     </div>
                 </div>
             <?php
-            require_once('partials/_footer.php');
-        }
-            ?>
+        require_once('partials/_footer.php');
+}
+?>
             </div>
             <!--  END CONTENT AREA  -->
     </div>
@@ -149,7 +148,7 @@ require_once('partials/_head.php');
 
     <?php
     require_once('partials/_scripts.php');
-    ?>
+?>
 </body>
 
 </html>

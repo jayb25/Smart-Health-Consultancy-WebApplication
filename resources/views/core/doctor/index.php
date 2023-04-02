@@ -7,7 +7,7 @@ if (isset($_POST['login'])) {
     $doc_password = sha1(md5($_POST['doc_password'])); //double encrypt to increase security
     $stmt = $mysqli->prepare("SELECT doc_email, doc_password, doc_id  FROM medical_experts  WHERE (doc_email =? AND doc_password =?)");
     $stmt->bind_param('ss', $doc_email, $doc_password); //bind fetched parameters
-    $stmt->execute(); //execute bind 
+    $stmt->execute(); //execute bind
     $stmt->bind_result($doc_email, $doc_password, $doc_id); //bind result
     $rs = $stmt->fetch();
     $_SESSION['doc_id'] = $doc_id;

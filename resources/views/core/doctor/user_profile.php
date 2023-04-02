@@ -4,7 +4,6 @@ require_once('configs/config.php');
 require_once('configs/checklogin.php');
 
 if (isset($_POST['change_password'])) {
-
     //Change Password
     $error = 0;
     if (isset($_POST['old_password']) && !empty($_POST['old_password'])) {
@@ -60,18 +59,18 @@ require_once('partials/_head.php');
     <!--  BEGIN NAVBAR  -->
     <?php
     require_once('partials/_nav.php');
-    $doc_id = $_SESSION['doc_id'];
-    $ret = "SELECT * FROM `medical_experts` WHERE doc_id ='$doc_id' ";
-    $stmt = $mysqli->prepare($ret);
-    $stmt->execute(); //ok
-    $res = $stmt->get_result();
-    while ($row = $res->fetch_object()) {
-        if ($row->doc_photo == '') {
-            //Load Default Image
-            $profile = "<img src='../admin/assets/img/admin.png' class='img-fluid img-thumbnail' alt='avatar'>";
-        } else {
-            $profile = "<img src='../admin/assets/img/paramedics/$row->doc_photo' class='img-fluid img-thumbnail' alt='avatar'>";
-        }
+$doc_id = $_SESSION['doc_id'];
+$ret = "SELECT * FROM `medical_experts` WHERE doc_id ='$doc_id' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    if ($row->doc_photo == '') {
+        //Load Default Image
+        $profile = "<img src='../admin/assets/img/admin.png' class='img-fluid img-thumbnail' alt='avatar'>";
+    } else {
+        $profile = "<img src='../admin/assets/img/paramedics/$row->doc_photo' class='img-fluid img-thumbnail' alt='avatar'>";
+    }
 
     ?>
         <!--  END NAVBAR  -->
@@ -162,7 +161,7 @@ require_once('partials/_head.php');
                                                     } else {
                                                         echo "<span class='badge outline-badge-success'>$row->doc_status</span>";
                                                     }
-                                                    ?>
+    ?>
                                                 </li>
 
                                                 <li class="contacts-block__item">
@@ -394,7 +393,7 @@ require_once('partials/_head.php');
                     </div>
                 </div>
             <?php require_once('partials/_footer.php');
-        } ?>
+} ?>
             </div>
             <!--  END CONTENT AREA  -->
         </div>

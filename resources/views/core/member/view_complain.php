@@ -49,20 +49,19 @@ require_once('partials/_head.php');
         <!--  BEGIN SIDEBAR  -->
         <?php
         require_once('partials/_sidebar.php');
-        $view = $_GET['view'];
-        $ret = "SELECT * FROM `feedbacks`  WHERE f_id = '$view' ";
-        $stmt = $mysqli->prepare($ret);
-        $stmt->execute(); //ok
-        $res = $stmt->get_result();
-        while ($row = $res->fetch_object()) {
-            $user = $row->member_id;
-            //Nest Fetch
-            $ret = "SELECT * FROM `members`  WHERE member_id = '$user' ";
-            $stmt = $mysqli->prepare($ret);
-            $stmt->execute(); //ok
-            $res = $stmt->get_result();
-            while ($user = $res->fetch_object()) {
-
+$view = $_GET['view'];
+$ret = "SELECT * FROM `feedbacks`  WHERE f_id = '$view' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    $user = $row->member_id;
+    //Nest Fetch
+    $ret = "SELECT * FROM `members`  WHERE member_id = '$user' ";
+    $stmt = $mysqli->prepare($ret);
+    $stmt->execute(); //ok
+    $res = $stmt->get_result();
+    while ($user = $res->fetch_object()) {
         ?>
                 <!--  END SIDEBAR  -->
 
@@ -149,8 +148,8 @@ require_once('partials/_head.php');
     </div>
 <?php
                 require_once('partials/_scripts.php');
-            }
-        }
+    }
+}
 ?>
 </body>
 

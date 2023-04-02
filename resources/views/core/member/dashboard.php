@@ -189,11 +189,11 @@ require_once('partials/_head.php');
                                             <tbody>
                                                 <?php
                                                 $ret = "SELECT * FROM `medical_experts` ORDER BY  RAND() LIMIT 5 ";
-                                                $stmt = $mysqli->prepare($ret);
-                                                $stmt->execute(); //ok
-                                                $res = $stmt->get_result();
-                                                while ($row = $res->fetch_object()) {
-                                                ?>
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                                     <tr>
                                                         <td>
                                                             <a href="view_doc.php?view=<?php echo $row->doc_id; ?>">
@@ -212,13 +212,13 @@ require_once('partials/_head.php');
                                                         </td>
                                                         <td>
                                                             <?php
-                                                            if ($row->doc_status == 'Pending') {
-                                                                echo "<div class='td-content'><span class='badge outline-badge-danger'>$row->doc_status</span></div>";
-                                                            } else {
-                                                                echo "<div class='td-content'><span class='badge outline-badge-success'>$row->doc_status</span></div>";
-                                                            }
+                if ($row->doc_status == 'Pending') {
+                    echo "<div class='td-content'><span class='badge outline-badge-danger'>$row->doc_status</span></div>";
+                } else {
+                    echo "<div class='td-content'><span class='badge outline-badge-success'>$row->doc_status</span></div>";
+                }
 
-                                                            ?>
+    ?>
                                                         </td>
                                                         <td>
                                                             <div class='td-content'>
@@ -249,12 +249,12 @@ require_once('partials/_head.php');
                                     <div class="timeline-line">
                                         <?php
                                         $session = $_SESSION['member_id'];
-                                        $ret = "SELECT * FROM `membership_payments` WHERE status ='Confirmed' AND member_id ='$session' ORDER BY `membership_payments`.`created_at` DESC  ";
-                                        $stmt = $mysqli->prepare($ret);
-                                        $stmt->execute(); //ok
-                                        $res = $stmt->get_result();
-                                        while ($row = $res->fetch_object()) {
-                                        ?>
+$ret = "SELECT * FROM `membership_payments` WHERE status ='Confirmed' AND member_id ='$session' ORDER BY `membership_payments`.`created_at` DESC  ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                             <div class="item-timeline timeline-new">
                                                 <div class="t-dot">
                                                     <div class="t-primary">
@@ -278,7 +278,7 @@ require_once('partials/_head.php');
                                                 </div>
                                             </div>
                                         <?php
-                                        } ?>
+} ?>
                                     </div>
                                 </div>
                             </div>

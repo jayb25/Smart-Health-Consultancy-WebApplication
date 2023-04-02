@@ -94,27 +94,27 @@ require_once('partials/_head.php');
                                     <tbody>
                                         <?php
                                         $ret = "SELECT * FROM `members` ";
-                                        $stmt = $mysqli->prepare($ret);
-                                        $stmt->execute(); //ok
-                                        $res = $stmt->get_result();
-                                        while ($row = $res->fetch_object()) {
-                                        ?>
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                             <tr>
                                                 <td><?php echo $row->member_name; ?></td>
                                                 <td><?php echo $row->member_phone; ?></td>
                                                 <td><?php echo $row->member_email; ?></td>
                                                 <td>
                                                     <?php
-                                                    if ($row->member_package == 'Gold Package') {
-                                                        echo "<span class='badge outline-badge-success'>$row->member_package</span>";
-                                                    } elseif ($row->member_package == 'Silver Package') {
-                                                        echo "<span class='badge outline-badge-warning'>$row->member_package</span>";
-                                                    } elseif ($row->member_package == 'Bronze Package') {
-                                                        echo "<span class='badge outline-badge-primary'>$row->member_package</span>";
-                                                    } else {
-                                                        echo "<span class='badge outline-badge-danger'>$row->member_package</span>";
-                                                    }
-                                                    ?>
+                if ($row->member_package == 'Gold Package') {
+                    echo "<span class='badge outline-badge-success'>$row->member_package</span>";
+                } elseif ($row->member_package == 'Silver Package') {
+                    echo "<span class='badge outline-badge-warning'>$row->member_package</span>";
+                } elseif ($row->member_package == 'Bronze Package') {
+                    echo "<span class='badge outline-badge-primary'>$row->member_package</span>";
+                } else {
+                    echo "<span class='badge outline-badge-danger'>$row->member_package</span>";
+                }
+    ?>
                                                 </td>
                                                 <td><?php echo date('d M Y g:i', strtotime($row->created_at)); ?></td>
                                                 <td>
@@ -122,7 +122,7 @@ require_once('partials/_head.php');
                                                 </td>
                                             </tr>
                                         <?php
-                                        } ?>
+} ?>
 
                                     </tbody>
                                 </table>

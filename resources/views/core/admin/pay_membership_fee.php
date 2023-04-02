@@ -7,7 +7,6 @@ include('configs/codeGen.php');
 check_login();
 
 if (isset($_POST['add'])) {
-
     $pay_id = $_POST['pay_id'];
     $pay_code = $_POST['pay_code'];
     $pay_method = $_POST['pay_method'];
@@ -38,7 +37,7 @@ require_once('partials/_head.php');
     <!--  BEGIN NAVBAR  -->
     <?php
     require_once('partials/_nav.php');
-    ?>
+?>
     <!--  END NAVBAR  -->
 
     <!--  BEGIN NAVBAR  -->
@@ -102,12 +101,12 @@ require_once('partials/_head.php');
                                         <select class='form-control basic' name="pay_method">
                                             <option selected>Select Payment Method</option>
                                             <?php
-                                            $ret = "SELECT * FROM `payment_methods` ";
-                                            $stmt = $mysqli->prepare($ret);
-                                            $stmt->execute(); //ok
-                                            $res = $stmt->get_result();
-                                            while ($row = $res->fetch_object()) {
-                                            ?>
+                                        $ret = "SELECT * FROM `payment_methods` ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                                 <option><?php echo $row->method_name; ?></option>
                                             <?php } ?>
                                         </select>
@@ -118,13 +117,12 @@ require_once('partials/_head.php');
                                     </div>
                                     <?php
                                     $member_package = $_GET['member_package'];
-                                    $ret = "SELECT * FROM `packages` WHERE package_name ='$member_package' ";
-                                    $stmt = $mysqli->prepare($ret);
-                                    $stmt->execute(); //ok
-                                    $res = $stmt->get_result();
-                                    while ($row = $res->fetch_object()) {
-
-                                    ?>
+$ret = "SELECT * FROM `packages` WHERE package_name ='$member_package' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                         <div class="form-group col-md-6">
                                             <label for="inputEmail4">Package</label>
                                             <input type="text" readonly value="<?php echo $row->package_name; ?>" class="form-control">
@@ -144,7 +142,7 @@ require_once('partials/_head.php');
             </div>
             <?php
             require_once('partials/_footer.php');
-            ?>
+?>
         </div>
         <!--  END CONTENT AREA  -->
     </div>
@@ -152,7 +150,7 @@ require_once('partials/_head.php');
 
     <?php
     require_once('partials/_scripts.php');
-    ?>
+?>
 </body>
 
 </html>

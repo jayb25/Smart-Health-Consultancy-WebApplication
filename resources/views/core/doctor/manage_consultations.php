@@ -92,12 +92,12 @@ require_once('partials/_head.php');
                                     <tbody>
                                         <?php
                                         $doc_id = $_SESSION['doc_id'];
-                                        $ret = "SELECT * FROM `consultations` WHERE doc_id ='$doc_id' ";
-                                        $stmt = $mysqli->prepare($ret);
-                                        $stmt->execute(); //ok
-                                        $res = $stmt->get_result();
-                                        while ($row = $res->fetch_object()) {
-                                        ?>
+$ret = "SELECT * FROM `consultations` WHERE doc_id ='$doc_id' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                             <tr>
                                                 <td>
                                                     <a class="badge outline-badge-success" href="view_consultation.php?view=<?php echo $row->consul_id; ?>">
@@ -114,7 +114,7 @@ require_once('partials/_head.php');
                                                 </td>
                                             </tr>
                                         <?php
-                                        } ?>
+} ?>
                                     </tbody>
                                 </table>
                             </div>

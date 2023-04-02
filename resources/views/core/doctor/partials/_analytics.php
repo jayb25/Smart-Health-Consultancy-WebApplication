@@ -1,4 +1,5 @@
 <?php
+
 //Verified
 $query = "SELECT COUNT(*) FROM `medical_experts` WHERE doc_status = 'Verified' ";
 $stmt = $mysqli->prepare($query);
@@ -47,7 +48,7 @@ $stmt->bind_result($silver);
 $stmt->fetch();
 $stmt->close();
 
-//Bronze 
+//Bronze
 $query = "SELECT COUNT(*) FROM `members` WHERE member_package = 'Bronze Package' ";
 $stmt = $mysqli->prepare($query);
 $stmt->execute();
@@ -73,7 +74,7 @@ $stmt->close();
 
 
 
-/* 
+/*
     Montly Member Enrollments
  */
 

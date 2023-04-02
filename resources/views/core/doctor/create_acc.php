@@ -18,7 +18,7 @@ if (isset($_POST['sign-up'])) {
     $rc = $stmt->bind_param('ssssssss', $doc_password, $month_joined, $doc_id, $doc_number, $doc_name, $doc_email, $doc_phone, $doc_status);
     $stmt->execute();
     if ($stmt) {
-        //inject alert that post is shared  
+        //inject alert that post is shared
         $success = "Medical Expert Account Created" && header("refresh:1; url=index.php");
     } else {
         //inject alert that task failed

@@ -12,8 +12,8 @@ if (isset($_POST['sign-up'])) {
     $member_adr = $_POST['member_adr'];
     $member_package = $_POST['member_package'];
     $member_password = sha1(md5($_POST['member_password']));
-   /*  $member_pic = $_FILES['member_pic']['name'];
-    move_uploaded_file($_FILES["member_pic"]["tmp_name"], "assets/img/clients/" . $_FILES["member_pic"]["name"]);
+    /*  $member_pic = $_FILES['member_pic']['name'];
+     move_uploaded_file($_FILES["member_pic"]["tmp_name"], "assets/img/clients/" . $_FILES["member_pic"]["name"]);
  */
     $query = "INSERT INTO members (member_password, month_joined, member_id, member_name, member_phone, member_email, member_adr, member_package) VALUES (?,?,?,?,?,?,?,?)";
     $stmt = $mysqli->prepare($query);

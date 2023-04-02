@@ -7,7 +7,6 @@ include('configs/codeGen.php');
 check_login();
 
 if (isset($_POST['add'])) {
-
     $consul_id = $_POST['consul_id'];
     $consul_code = $_POST['consul_code'];
     $member_id = $_SESSION['member_id'];
@@ -39,7 +38,7 @@ require_once('partials/_head.php');
     <!--  BEGIN NAVBAR  -->
     <?php
     require_once('partials/_nav.php');
-    ?>
+?>
     <!--  END NAVBAR  -->
 
     <!--  BEGIN NAVBAR  -->
@@ -97,17 +96,17 @@ require_once('partials/_head.php');
                                         <input type="text" name="consul_code" value="<?php echo $a; ?>-<?php echo $b; ?>" class="form-control">
                                         <input type="text" name="consul_status" value="Pending" class="form-control">
                                         <?php
-                                        $member_id = $_SESSION['member_id'];
-                                        $ret = "SELECT * FROM `members` WHERE member_id ='$member_id' ";
-                                        $stmt = $mysqli->prepare($ret);
-                                        $stmt->execute(); //ok
-                                        $res = $stmt->get_result();
-                                        while ($row = $res->fetch_object()) {
-                                        ?>
+                                    $member_id = $_SESSION['member_id'];
+$ret = "SELECT * FROM `members` WHERE member_id ='$member_id' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                             <input type="text" name="member_name" value="<?php echo $row->member_name; ?>" class="form-control">
                                             <input type="text" name="member_phone" value="<?php echo $row->member_phone; ?>" class="form-control">
                                         <?php
-                                        } ?>
+} ?>
                                     </div>
                                 </div>
                                 <div class="form-row">
@@ -127,7 +126,7 @@ require_once('partials/_head.php');
             </div>
             <?php
             require_once('partials/_footer.php');
-            ?>
+?>
         </div>
         <!--  END CONTENT AREA  -->
     </div>
@@ -135,7 +134,7 @@ require_once('partials/_head.php');
 
     <?php
     require_once('partials/_scripts.php');
-    ?>
+?>
 </body>
 
 </html>

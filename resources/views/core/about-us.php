@@ -126,11 +126,11 @@ require_once('partials/_head.php');
                 <div class="row">
                     <?php
                     $ret = "SELECT * FROM `feedbacks` WHERE type ='' ";
-                    $stmt = $mysqli->prepare($ret);
-                    $stmt->execute(); //ok
-                    $res = $stmt->get_result();
-                    while ($row = $res->fetch_object()) {
-                    ?>
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                         <div class="col-lg-4 col-md-6 col-12">
                             <div class="single_latest_post mb--40">
                                 <div class="htc__blog__content">

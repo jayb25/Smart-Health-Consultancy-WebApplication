@@ -78,12 +78,12 @@ require_once('partials/_head.php');
                                     <tbody>
                                         <?php
                                         $doc_id = $_SESSION['doc_id'];
-                                        $ret = "SELECT * FROM `payrolls` WHERE doc_id ='$doc_id' ";
-                                        $stmt = $mysqli->prepare($ret);
-                                        $stmt->execute(); //ok
-                                        $res = $stmt->get_result();
-                                        while ($row = $res->fetch_object()) {
-                                        ?>
+$ret = "SELECT * FROM `payrolls` WHERE doc_id ='$doc_id' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                             <tr>
                                                 <td>
                                                     <a class="badge outline-badge-success" href="view_payroll.php?view=<?php echo $row->payroll_id; ?>">
@@ -97,7 +97,7 @@ require_once('partials/_head.php');
                                                 <td><?php echo date('d M Y g:i', strtotime($row->created_at)); ?></td>
                                             </tr>
                                         <?php
-                                        } ?>
+} ?>
                                     </tbody>
                                 </table>
                             </div>

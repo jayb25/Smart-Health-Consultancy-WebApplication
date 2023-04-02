@@ -7,14 +7,13 @@ include('configs/codeGen.php');
 check_login();
 
 if (isset($_POST['update'])) {
-
     $update = $_GET['update'];
     $pay_code = $_POST['pay_code'];
     $pay_method = $_POST['pay_method'];
 
     $query = "UPDATE membership_payments SET pay_code =?, pay_method =? WHERE pay_id =?";
     $stmt = $mysqli->prepare($query);
-    $rc = $stmt->bind_param('sss',  $pay_code, $pay_method, $update);
+    $rc = $stmt->bind_param('sss', $pay_code, $pay_method, $update);
     $stmt->execute();
     if ($stmt) {
         $success = "Success" && header("refresh:1; url=membership_fee.php");
@@ -33,7 +32,7 @@ require_once('partials/_head.php');
     <!--  BEGIN NAVBAR  -->
     <?php
     require_once('partials/_nav.php');
-    ?>
+?>
     <!--  END NAVBAR  -->
 
     <!--  BEGIN NAVBAR  -->
@@ -97,12 +96,12 @@ require_once('partials/_head.php');
                                         <select class='form-control basic' name="pay_method">
                                             <option selected>Select Payment Method</option>
                                             <?php
-                                            $ret = "SELECT * FROM `payment_methods` ";
-                                            $stmt = $mysqli->prepare($ret);
-                                            $stmt->execute(); //ok
-                                            $res = $stmt->get_result();
-                                            while ($row = $res->fetch_object()) {
-                                            ?>
+                                        $ret = "SELECT * FROM `payment_methods` ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                                 <option><?php echo $row->method_name; ?></option>
                                             <?php } ?>
                                         </select>
@@ -113,13 +112,12 @@ require_once('partials/_head.php');
                                     </div>
                                     <?php
                                     $update = $_GET['update'];
-                                    $ret = "SELECT * FROM `membership_payments` WHERE pay_id ='$update' ";
-                                    $stmt = $mysqli->prepare($ret);
-                                    $stmt->execute(); //ok
-                                    $res = $stmt->get_result();
-                                    while ($row = $res->fetch_object()) {
-
-                                    ?>
+$ret = "SELECT * FROM `membership_payments` WHERE pay_id ='$update' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                         <div class="form-group col-md-6">
                                             <label for="inputEmail4">Package</label>
                                             <input type="text" readonly value="<?php echo $row->member_package; ?>" class="form-control">
@@ -139,7 +137,7 @@ require_once('partials/_head.php');
             </div>
             <?php
             require_once('partials/_footer.php');
-            ?>
+?>
         </div>
         <!--  END CONTENT AREA  -->
     </div>
@@ -147,7 +145,7 @@ require_once('partials/_head.php');
 
     <?php
     require_once('partials/_scripts.php');
-    ?>
+?>
 </body>
 
 </html>

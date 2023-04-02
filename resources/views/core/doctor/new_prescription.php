@@ -7,7 +7,6 @@ include('configs/codeGen.php');
 check_login();
 
 if (isset($_POST['add'])) {
-
     $consul_id = $_GET['consul_id'];
     $pre_id = $_POST['pre_id'];
     $pre_code = $_POST['pre_code'];
@@ -41,7 +40,7 @@ require_once('partials/_head.php');
     <!--  BEGIN NAVBAR  -->
     <?php
     require_once('partials/_nav.php');
-    ?>
+?>
     <!--  END NAVBAR  -->
 
     <!--  BEGIN NAVBAR  -->
@@ -100,13 +99,13 @@ require_once('partials/_head.php');
                                     </div>
                                 </div>
                                 <?php
-                                $consul_id = $_GET['consul_id'];
-                                $ret = "SELECT * FROM `consultations` WHERE consul_id ='$consul_id' ";
-                                $stmt = $mysqli->prepare($ret);
-                                $stmt->execute(); //ok
-                                $res = $stmt->get_result();
-                                while ($row = $res->fetch_object()) {
-                                ?>
+                            $consul_id = $_GET['consul_id'];
+$ret = "SELECT * FROM `consultations` WHERE consul_id ='$consul_id' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                 <div class="form-row mb-4">
                                     <div class="form-group col-md-12">
                                         <div class="card component-card_1">
@@ -134,7 +133,7 @@ require_once('partials/_head.php');
             </div>
             <?php
             require_once('partials/_footer.php');
-            ?>
+?>
         </div>
         <!--  END CONTENT AREA  -->
     </div>
@@ -142,7 +141,7 @@ require_once('partials/_head.php');
 
     <?php
     require_once('partials/_scripts.php');
-    ?>
+?>
 </body>
 
 </html>

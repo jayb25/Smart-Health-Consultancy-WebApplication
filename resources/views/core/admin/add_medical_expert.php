@@ -24,7 +24,7 @@ if (isset($_POST['add_doc'])) {
     $rc = $stmt->bind_param('sssssssss', $month_joined, $doc_id, $doc_number, $doc_name, $doc_email, $doc_phone, $doc_bio, $doc_status, $doc_photo);
     $stmt->execute();
     if ($stmt) {
-        //inject alert that post is shared  
+        //inject alert that post is shared
         $success = "Medical Expert Account Created" && header("refresh:1; url=manage_docs.php");
     } else {
         //inject alert that task failed
@@ -41,7 +41,7 @@ require_once('partials/_head.php');
     <!--  BEGIN NAVBAR  -->
     <?php
     require_once('partials/_nav.php');
-    ?>
+?>
     <!--  END NAVBAR  -->
 
     <!--  BEGIN NAVBAR  -->
@@ -133,8 +133,8 @@ require_once('partials/_head.php');
                 </div>
             </div>
             <?php
-            require_once('partials/_footer.php');
-            ?>
+        require_once('partials/_footer.php');
+?>
         </div>
         <!--  END CONTENT AREA  -->
     </div>
@@ -142,7 +142,7 @@ require_once('partials/_head.php');
 
     <?php
     require_once('partials/_scripts.php');
-    ?>
+?>
 </body>
 
 </html>

@@ -127,11 +127,11 @@ require_once('partials/_head.php');
                                         <tbody>
                                             <?php
                                             $ret = "SELECT * FROM `members` ORDER BY `members`.`created_at` DESC LIMIT 5 ";
-                                            $stmt = $mysqli->prepare($ret);
-                                            $stmt->execute(); //ok
-                                            $res = $stmt->get_result();
-                                            while ($row = $res->fetch_object()) {
-                                            ?>
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                                 <tr>
                                                     <td>
                                                         <div class=" badge outline-badge-success td-content product-brand"><?php echo $row->member_id; ?></div>

@@ -111,11 +111,11 @@ require_once('partials/_head.php');
                                     <tbody>
                                         <?php
                                         $ret = "SELECT * FROM `membership_payments` ";
-                                        $stmt = $mysqli->prepare($ret);
-                                        $stmt->execute(); //ok
-                                        $res = $stmt->get_result();
-                                        while ($row = $res->fetch_object()) {
-                                        ?>
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                             <tr>
                                                 <td>
                                                     <span  class="badge outline-badge-success">
@@ -129,16 +129,14 @@ require_once('partials/_head.php');
                                                 <td><?php echo date('d M Y g:i', strtotime($row->created_at)); ?></td>
                                                 <td>
                                                     <?php
-                                                    if ($row->status == 'Pending'){
-                                                        echo "<span class='badge outline-badge-danger'>$row->status</span>";
-                                                    }
-                                                    elseif($row->status =='Reversed'){
-                                                        echo "<span class='badge outline-badge-warning'>$row->status</span>";
-                                                    }
-                                                    else{
-                                                        echo "<span class='badge outline-badge-success'>$row->status</span>";
-                                                    }
-                                                    ?>
+                if ($row->status == 'Pending') {
+                    echo "<span class='badge outline-badge-danger'>$row->status</span>";
+                } elseif ($row->status =='Reversed') {
+                    echo "<span class='badge outline-badge-warning'>$row->status</span>";
+                } else {
+                    echo "<span class='badge outline-badge-success'>$row->status</span>";
+                }
+    ?>
                                                 </td>
                                                 <td>
                                                     <a class="badge outline-badge-primary" href="update_membership_fee.php?update=<?php echo $row->pay_id; ?>">Update</a>
@@ -147,7 +145,7 @@ require_once('partials/_head.php');
                                                 </td>
                                             </tr>
                                         <?php
-                                        } ?>
+} ?>
                                     </tbody>
                                 </table>
                             </div>
