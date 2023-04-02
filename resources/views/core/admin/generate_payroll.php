@@ -7,7 +7,6 @@ check_login();
 
 //Add Medical Expert
 if (isset($_POST['generate_payroll'])) {
-
     $doc_id = $_GET['doc_id'];
     $doc_number = $_POST['doc_number'];
     $doc_name = $_POST['doc_name'];
@@ -22,7 +21,7 @@ if (isset($_POST['generate_payroll'])) {
     $rc = $stmt->bind_param('ssssssss', $doc_id, $doc_number, $doc_name, $doc_email, $payroll_id, $payroll_code, $payroll_month, $payroll_salary);
     $stmt->execute();
     if ($stmt) {
-        //inject alert that post is shared  
+        //inject alert that post is shared
         $success = "Payroll Added" && header("refresh:1; url=manage_payrolls.php");
     } else {
         //inject alert that task failed
@@ -39,7 +38,7 @@ require_once('partials/_head.php');
     <!--  BEGIN NAVBAR  -->
     <?php
     require_once('partials/_nav.php');
-    ?>
+?>
     <!--  END NAVBAR  -->
 
     <!--  BEGIN NAVBAR  -->
@@ -97,13 +96,13 @@ require_once('partials/_head.php');
                                     </div>
                                 </div>
                                 <?php
-                                $doc_id = $_GET['doc_id'];
-                                $ret = "SELECT * FROM `medical_experts` WHERE doc_id ='$doc_id' ";
-                                $stmt = $mysqli->prepare($ret);
-                                $stmt->execute(); //ok
-                                $res = $stmt->get_result();
-                                while ($row = $res->fetch_object()) {
-                                ?>
+                            $doc_id = $_GET['doc_id'];
+$ret = "SELECT * FROM `medical_experts` WHERE doc_id ='$doc_id' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                     <div class="form-row mb-4">
                                         <div class="form-group col-md-6">
                                             <label for="inputEmail4">Full Name</label>
@@ -155,7 +154,7 @@ require_once('partials/_head.php');
             </div>
             <?php
             require_once('partials/_footer.php');
-            ?>
+?>
         </div>
         <!--  END CONTENT AREA  -->
     </div>
@@ -163,7 +162,7 @@ require_once('partials/_head.php');
 
     <?php
     require_once('partials/_scripts.php');
-    ?>
+?>
 </body>
 
 </html>

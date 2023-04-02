@@ -38,7 +38,7 @@ require_once('partials/_head.php');
     <!--  BEGIN NAVBAR  -->
     <?php
     require_once('partials/_nav.php');
-    ?>
+?>
     <!--  END NAVBAR  -->
 
     <!--  BEGIN NAVBAR  -->
@@ -110,12 +110,12 @@ require_once('partials/_head.php');
                                         <select class='form-control basic' name="member_package" id="">
                                             <option selected>Select Membership Package</option>
                                             <?php
-                                            $ret = "SELECT * FROM `packages` ";
-                                            $stmt = $mysqli->prepare($ret);
-                                            $stmt->execute(); //ok
-                                            $res = $stmt->get_result();
-                                            while ($row = $res->fetch_object()) {
-                                            ?>
+                                        $ret = "SELECT * FROM `packages` ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                                 <option><?php echo $row->package_name; ?></option>
                                             <?php } ?>
                                         </select>
@@ -144,7 +144,7 @@ require_once('partials/_head.php');
             </div>
             <?php
             require_once('partials/_footer.php');
-            ?>
+?>
         </div>
         <!--  END CONTENT AREA  -->
     </div>
@@ -152,7 +152,7 @@ require_once('partials/_head.php');
 
     <?php
     require_once('partials/_scripts.php');
-    ?>
+?>
 </body>
 
 </html>

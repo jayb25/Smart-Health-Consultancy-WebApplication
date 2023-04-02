@@ -50,13 +50,13 @@ require_once('partials/_head.php');
         <?php
         require_once('partials/_sidebar.php');
 
-        $view = $_GET['view'];
-        $ret = "SELECT * FROM `payrolls` WHERE payroll_id = '$view' ";
-        $stmt = $mysqli->prepare($ret);
-        $stmt->execute(); //ok
-        $res = $stmt->get_result();
-        while ($row = $res->fetch_object()) {
-            $docid = $row->doc_id; ?>
+$view = $_GET['view'];
+$ret = "SELECT * FROM `payrolls` WHERE payroll_id = '$view' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    $docid = $row->doc_id; ?>
             <!--  END SIDEBAR  -->
 
             <!--  BEGIN CONTENT AREA  -->
@@ -136,31 +136,31 @@ require_once('partials/_head.php');
                                                         <div class="col-sm-6 col-12 align-self-center text-sm-right">
                                                             <div class="company-info">
                                                                 <?php
-                                                                $ret = "SELECT * FROM `medical_experts` WHERE doc_id ='$docid' ";
-                                                                $stmt = $mysqli->prepare($ret);
-                                                                $stmt->execute(); //ok
-                                                                $res = $stmt->get_result();
-                                                                while ($row = $res->fetch_object()) {
-                                                                    if ($row->doc_photo == '') {
-                                                                        //Load Default Image
-                                                                        echo  "<img src='assets/img/admin.png' class='img-fluid img-thumbnail' alt='avatar'>";
-                                                                    } else {
-                                                                        echo   "<img src='assets/img/paramedics/$row->doc_photo' class='img-fluid img-thumbnail' alt='avatar'>";
-                                                                    } ?>
+                                                        $ret = "SELECT * FROM `medical_experts` WHERE doc_id ='$docid' ";
+    $stmt = $mysqli->prepare($ret);
+    $stmt->execute(); //ok
+    $res = $stmt->get_result();
+    while ($row = $res->fetch_object()) {
+        if ($row->doc_photo == '') {
+            //Load Default Image
+            echo  "<img src='assets/img/admin.png' class='img-fluid img-thumbnail' alt='avatar'>";
+        } else {
+            echo   "<img src='assets/img/paramedics/$row->doc_photo' class='img-fluid img-thumbnail' alt='avatar'>";
+        } ?>
                                                                 <?php
-                                                                } ?>
+    } ?>
                                                             </div>
                                                         </div>
 
                                                     </div>
                                                     <?php
                                                     $view = $_GET['view'];
-                                                    $ret = "SELECT * FROM `payrolls` WHERE payroll_id = '$view' ";
-                                                    $stmt = $mysqli->prepare($ret);
-                                                    $stmt->execute(); //ok
-                                                    $res = $stmt->get_result();
-                                                    while ($row = $res->fetch_object()) {
-                                                    ?>
+    $ret = "SELECT * FROM `payrolls` WHERE payroll_id = '$view' ";
+    $stmt = $mysqli->prepare($ret);
+    $stmt->execute(); //ok
+    $res = $stmt->get_result();
+    while ($row = $res->fetch_object()) {
+        ?>
                                                         <div class="row inv--detail-section">
 
                                                             <div class="col-sm-7 align-self-center">
@@ -252,8 +252,8 @@ require_once('partials/_head.php');
                     </div>
                 </div>
                 <?php require_once('partials/_footer.php');
-                    }
-                } ?>
+    }
+} ?>
             </div>
             <!--  END CONTENT AREA  -->
 

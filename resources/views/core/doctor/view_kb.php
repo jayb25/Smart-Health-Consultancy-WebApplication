@@ -48,13 +48,13 @@ require_once('partials/_head.php');
         <!--  BEGIN SIDEBAR  -->
         <?php
         require_once('partials/_sidebar.php');
-        $view  = $_GET['view'];
-        $ret = "SELECT * FROM `knowledge_base` WHERE kb_id = '$view' ";
-        $stmt = $mysqli->prepare($ret);
-        $stmt->execute(); //ok
-        $res = $stmt->get_result();
-        while ($row = $res->fetch_object()) {
-        ?>
+$view  = $_GET['view'];
+$ret = "SELECT * FROM `knowledge_base` WHERE kb_id = '$view' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
             <!--  END SIDEBAR  -->
 
             <!--  BEGIN CONTENT AREA  -->
@@ -136,7 +136,7 @@ require_once('partials/_head.php');
                     </div>
                 </div>
             <?php require_once('partials/_footer.php');
-        } ?>
+} ?>
             </div>
             <!--  END CONTENT AREA  -->
     </div>

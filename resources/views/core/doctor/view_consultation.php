@@ -49,28 +49,27 @@ require_once('partials/_head.php');
         <!--  BEGIN SIDEBAR  -->
         <?php
         require_once('partials/_sidebar.php');
-        $view = $_GET['view'];
-        $ret = "SELECT * FROM `consultations`  WHERE consul_id = '$view' ";
+$view = $_GET['view'];
+$ret = "SELECT * FROM `consultations`  WHERE consul_id = '$view' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    $user = $row->member_id;
+    $doc = $row->doc_id;
+    //Nest Fetch
+    $ret = "SELECT * FROM `members`  WHERE member_id = '$user' ";
+    $stmt = $mysqli->prepare($ret);
+    $stmt->execute(); //ok
+    $res = $stmt->get_result();
+    while ($user = $res->fetch_object()) {
+        //Nest Doctors Fetch
+        $ret = "SELECT * FROM `medical_experts`  WHERE doc_id = '$doc' ";
         $stmt = $mysqli->prepare($ret);
         $stmt->execute(); //ok
         $res = $stmt->get_result();
-        while ($row = $res->fetch_object()) {
-            $user = $row->member_id;
-            $doc = $row->doc_id;
-            //Nest Fetch
-            $ret = "SELECT * FROM `members`  WHERE member_id = '$user' ";
-            $stmt = $mysqli->prepare($ret);
-            $stmt->execute(); //ok
-            $res = $stmt->get_result();
-            while ($user = $res->fetch_object()) {
-
-                //Nest Doctors Fetch
-                $ret = "SELECT * FROM `medical_experts`  WHERE doc_id = '$doc' ";
-                $stmt = $mysqli->prepare($ret);
-                $stmt->execute(); //ok
-                $res = $stmt->get_result();
-                while ($doctor = $res->fetch_object()) {
-        ?>
+        while ($doctor = $res->fetch_object()) {
+            ?>
                     <!--  END SIDEBAR  -->
 
                     <!--  BEGIN CONTENT AREA  -->
@@ -89,11 +88,11 @@ require_once('partials/_head.php');
                                             </div>
                                             <div class="text-center user-info">
                                                 <?php
-                                                if ($user->member_pic == '') {
-                                                    echo "<img src='../admin/assets/img/admin/admin.png' class='img-thumbnail img-fluid' alt='avatar'>";
-                                                } else {
-                                                    echo "<img src='../admin/assets/img/clients/$user->member_pic' class='img-thumbnail img-fluid' alt='avatar'>";
-                                                } ?>
+                                                    if ($user->member_pic == '') {
+                                                        echo "<img src='../admin/assets/img/admin/admin.png' class='img-thumbnail img-fluid' alt='avatar'>";
+                                                    } else {
+                                                        echo "<img src='../admin/assets/img/clients/$user->member_pic' class='img-thumbnail img-fluid' alt='avatar'>";
+                                                    } ?>
                                                 <p class=""><?php echo $user->member_name; ?></p>
                                             </div>
                                             <div class="user-info-list">
@@ -223,9 +222,9 @@ require_once('partials/_head.php');
     </div>
 <?php
                     require_once('partials/_scripts.php');
-                }
-            }
-        } ?>
+        }
+    }
+} ?>
 </body>
 
 </html>

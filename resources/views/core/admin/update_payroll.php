@@ -6,7 +6,6 @@ include('configs/codeGen.php');
 check_login();
 
 if (isset($_POST['update_payroll'])) {
-
     $update = $_GET['update'];
     $payroll_code = $_POST['payroll_code'];
     $payroll_month = $_POST['payroll_month'];
@@ -33,7 +32,7 @@ require_once('partials/_head.php');
     <!--  BEGIN NAVBAR  -->
     <?php
     require_once('partials/_nav.php');
-    ?>
+?>
     <!--  END NAVBAR  -->
 
     <!--  BEGIN NAVBAR  -->
@@ -73,13 +72,13 @@ require_once('partials/_head.php');
 
         <!--  BEGIN SIDEBAR  -->
         <?php require_once('partials/_sidebar.php');
-        $update = $_GET['update'];
-        $ret = "SELECT * FROM `payrolls` WHERE payroll_id ='$update' ";
-        $stmt = $mysqli->prepare($ret);
-        $stmt->execute(); //ok
-        $res = $stmt->get_result();
-        while ($row = $res->fetch_object()) {
-        ?>
+$update = $_GET['update'];
+$ret = "SELECT * FROM `payrolls` WHERE payroll_id ='$update' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
             <!--  BEGIN CONTENT AREA  -->
             <div id="content" class="main-content">
                 <div class="layout-px-spacing">
@@ -138,9 +137,9 @@ require_once('partials/_head.php');
                     </div>
                 </div>
             <?php
-            require_once('partials/_footer.php');
-        }
-            ?>
+        require_once('partials/_footer.php');
+}
+?>
             </div>
             <!--  END CONTENT AREA  -->
     </div>
@@ -148,7 +147,7 @@ require_once('partials/_head.php');
 
     <?php
     require_once('partials/_scripts.php');
-    ?>
+?>
 </body>
 
 </html>

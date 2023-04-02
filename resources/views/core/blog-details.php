@@ -7,7 +7,7 @@ $stmt = $mysqli->prepare($ret);
 $stmt->execute(); //ok
 $res = $stmt->get_result();
 while ($row = $res->fetch_object()) {
-?>
+    ?>
 
     <body>
         <!--[if lt IE 8]>
@@ -19,7 +19,7 @@ while ($row = $res->fetch_object()) {
 
             <!-- Start Header Style -->
             <?php
-            require_once('partials/_header.php'); ?>
+                require_once('partials/_header.php'); ?>
             <!-- End Header Style -->
 
 
@@ -86,12 +86,12 @@ while ($row = $res->fetch_object()) {
 
             <!-- Start Subscribe Area -->
             <?php
-            require_once('partials/_subscribe.php'); ?>
+                require_once('partials/_subscribe.php'); ?>
             <!-- End Subscribe Area -->
         <?php
-        require_once('partials/_footer.php');
-    }
-        ?>
+            require_once('partials/_footer.php');
+}
+?>
         <!-- End Footer Area -->
         </div>
         <script src="js/vendor/jquery.js"></script>

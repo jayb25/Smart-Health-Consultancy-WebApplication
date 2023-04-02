@@ -13,7 +13,7 @@ require_once('partials/_head.php');
 
         <?php
         require_once('partials/_header.php');
-        ?>
+?>
 
         <!-- Start Bradcaump area -->
         <div class="ht__bradcaump__area">
@@ -34,14 +34,12 @@ require_once('partials/_head.php');
             <div class="container">
                 <div class="row blog-masonry">
                     <?php
-                    $ret = "SELECT * FROM `knowledge_base` ";
-                    $stmt = $mysqli->prepare($ret);
-                    $stmt->execute(); //ok
-                    $res = $stmt->get_result();
-                    while ($row = $res->fetch_object()) {
-
-
-                    ?>
+            $ret = "SELECT * FROM `knowledge_base` ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                         <div class="grid-item col-lg-4 col-md-6 col-12">
                             <div class="single_latest_post mb--30">
                                 <div class="ht__blog__thumb">
@@ -68,7 +66,7 @@ require_once('partials/_head.php');
                             </div>
                         </div>
                     <?php
-                    } ?>
+} ?>
                 </div>
             </div>
         </div>

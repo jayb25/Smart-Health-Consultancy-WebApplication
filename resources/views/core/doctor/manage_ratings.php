@@ -91,12 +91,12 @@ require_once('partials/_head.php');
                                     <tbody>
                                         <?php
                                         $doc_id = $_SESSION['doc_id'];
-                                        $ret = "SELECT * FROM `ratings`  WHERE doc_id ='$doc_id' ";
-                                        $stmt = $mysqli->prepare($ret);
-                                        $stmt->execute(); //ok
-                                        $res = $stmt->get_result();
-                                        while ($row = $res->fetch_object()) {
-                                        ?>
+$ret = "SELECT * FROM `ratings`  WHERE doc_id ='$doc_id' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                             <tr>
                                                 <td>
                                                     <span class="badge outline-badge-success">
@@ -111,7 +111,7 @@ require_once('partials/_head.php');
                                                 </td>
                                             </tr>
                                         <?php
-                                        } ?>
+} ?>
                                     </tbody>
                                 </table>
                             </div>

@@ -7,7 +7,6 @@ include('configs/codeGen.php');
 check_login();
 
 if (isset($_POST['update'])) {
-
     $update = $_GET['update'];
     $prescription = $_POST['prescription'];
 
@@ -33,7 +32,7 @@ require_once('partials/_head.php');
     <!--  BEGIN NAVBAR  -->
     <?php
     require_once('partials/_nav.php');
-    ?>
+?>
     <!--  END NAVBAR  -->
 
     <!--  BEGIN NAVBAR  -->
@@ -92,20 +91,20 @@ require_once('partials/_head.php');
                                     </div>
                                 </div>
                                 <?php
-                                $update = $_GET['update'];
-                                $ret = "SELECT * FROM `prescriptions` WHERE pre_id ='$update' ";
-                                $stmt = $mysqli->prepare($ret);
-                                $stmt->execute(); //ok
-                                $res = $stmt->get_result();
-                                while ($row = $res->fetch_object()) {
-                                    $consulid = $row->consul_id;
-                                    //Nested Fetch
-                                    $ret = "SELECT * FROM `consultations` WHERE consul_id ='$consulid' ";
-                                    $stmt = $mysqli->prepare($ret);
-                                    $stmt->execute(); //ok
-                                    $res = $stmt->get_result();
-                                    while ($cons = $res->fetch_object()) {
-                                ?>
+                            $update = $_GET['update'];
+$ret = "SELECT * FROM `prescriptions` WHERE pre_id ='$update' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    $consulid = $row->consul_id;
+    //Nested Fetch
+    $ret = "SELECT * FROM `consultations` WHERE consul_id ='$consulid' ";
+    $stmt = $mysqli->prepare($ret);
+    $stmt->execute(); //ok
+    $res = $stmt->get_result();
+    while ($cons = $res->fetch_object()) {
+        ?>
                                         <div class="form-row mb-4">
                                             <div class="form-group col-md-12">
                                                 <div class="card component-card_1">
@@ -125,8 +124,8 @@ require_once('partials/_head.php');
                                             </div>
                                         </div>
                                 <?php
-                                    }
-                                } ?>
+    }
+} ?>
                                 <button type="submit" name="update" class="btn btn-primary mt-3">Submit</button>
                             </form>
                         </div>
@@ -135,7 +134,7 @@ require_once('partials/_head.php');
             </div>
             <?php
             require_once('partials/_footer.php');
-            ?>
+?>
         </div>
         <!--  END CONTENT AREA  -->
     </div>
@@ -143,7 +142,7 @@ require_once('partials/_head.php');
 
     <?php
     require_once('partials/_scripts.php');
-    ?>
+?>
 </body>
 
 </html>

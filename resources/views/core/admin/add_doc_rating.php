@@ -7,7 +7,6 @@ include('configs/codeGen.php');
 check_login();
 
 if (isset($_POST['add'])) {
-
     $rate_id = $_POST['rate_id'];
     $doc_id = $_GET['doc_id'];
     $doc_name = $_GET['doc_name'];
@@ -33,7 +32,7 @@ require_once('partials/_head.php');
     <!--  BEGIN NAVBAR  -->
     <?php
     require_once('partials/_nav.php');
-    ?>
+?>
     <!--  END NAVBAR  -->
 
     <!--  BEGIN NAVBAR  -->
@@ -107,8 +106,8 @@ require_once('partials/_head.php');
                 </div>
             </div>
             <?php
-            require_once('partials/_footer.php');
-            ?>
+        require_once('partials/_footer.php');
+?>
         </div>
         <!--  END CONTENT AREA  -->
     </div>
@@ -116,7 +115,7 @@ require_once('partials/_head.php');
 
     <?php
     require_once('partials/_scripts.php');
-    ?>
+?>
 </body>
 
 </html>

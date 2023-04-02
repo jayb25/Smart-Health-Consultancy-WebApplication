@@ -1,5 +1,5 @@
-<?php 
-    require_once('partials/_head.php');
+<?php
+require_once('partials/_head.php');
 ?>
 <body>
     <!--[if lt IE 8]>
@@ -11,9 +11,9 @@
        
        
        <!-- Start Header Style -->
-        <?php 
+        <?php
             require_once('partials/_header.php');
-        ?>
+?>
         <!-- End Header Style -->
 
         <!-- Start Bradcaump area -->
@@ -130,10 +130,10 @@
         </section>
         
         
-       <?php 
-        require_once('partials/_subscribe.php');
-        require_once('partials/_footer.php');
-       ?>
+       <?php
+require_once('partials/_subscribe.php');
+require_once('partials/_footer.php');
+?>
     </div>
     <!-- Body main wrapper end -->
 

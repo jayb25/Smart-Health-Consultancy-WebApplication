@@ -12,7 +12,7 @@ if (isset($_GET['delete'])) {
     $stmt->execute();
     $stmt->close();
     if ($stmt) {
-        //inject alert that post is shared  
+        //inject alert that post is shared
         $success = "Deleted" && header("refresh:1; url=manage_docs.php");
     } else {
         //inject alert that task failed
@@ -29,7 +29,7 @@ if (isset($_GET['verify'])) {
     $stmt->execute();
     $stmt->close();
     if ($stmt) {
-        //inject alert that post is shared  
+        //inject alert that post is shared
         $success = "Verified" && header("refresh:1; url=manage_docs.php");
     } else {
         //inject alert that task failed
@@ -45,7 +45,7 @@ if (isset($_GET['unverify'])) {
     $stmt->execute();
     $stmt->close();
     if ($stmt) {
-        //inject alert that post is shared  
+        //inject alert that post is shared
         $success = "Un Verified" && header("refresh:1; url=manage_docs.php");
     } else {
         //inject alert that task failed
@@ -144,11 +144,11 @@ require_once('partials/_head.php');
                                     <tbody>
                                         <?php
                                         $ret = "SELECT * FROM `medical_experts` ";
-                                        $stmt = $mysqli->prepare($ret);
-                                        $stmt->execute(); //ok
-                                        $res = $stmt->get_result();
-                                        while ($row = $res->fetch_object()) {
-                                        ?>
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                             <tr>
                                                 <td><?php echo $row->doc_number; ?></td>
                                                 <td><?php echo $row->doc_name; ?></td>
@@ -156,12 +156,12 @@ require_once('partials/_head.php');
                                                 <td><?php echo $row->doc_phone; ?></td>
                                                 <td>
                                                     <?php
-                                                    if ($row->doc_status == 'Pending') {
-                                                        echo "<span class='badge outline-badge-danger'>$row->doc_status</span>";
-                                                    } else {
-                                                        echo "<span class='badge outline-badge-success'>$row->doc_status</span>";
-                                                    }
-                                                    ?>
+                if ($row->doc_status == 'Pending') {
+                    echo "<span class='badge outline-badge-danger'>$row->doc_status</span>";
+                } else {
+                    echo "<span class='badge outline-badge-success'>$row->doc_status</span>";
+                }
+    ?>
                                                 </td>
                                                 <td>
                                                     <a class="badge outline-badge-success" href="view_doc.php?view=<?php echo $row->doc_id; ?>">View </a>
@@ -170,7 +170,7 @@ require_once('partials/_head.php');
                                                 </td>
                                             </tr>
                                         <?php
-                                        } ?>
+} ?>
 
                                     </tbody>
                                 </table>

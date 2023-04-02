@@ -13,7 +13,7 @@ if (isset($_GET['verify'])) {
     $stmt->execute();
     $stmt->close();
     if ($stmt) {
-        //inject alert that post is shared  
+        //inject alert that post is shared
         $success = "Verified" && header("refresh:1; url=account_verification.php");
     } else {
         //inject alert that task failed
@@ -29,7 +29,7 @@ if (isset($_GET['unverify'])) {
     $stmt->execute();
     $stmt->close();
     if ($stmt) {
-        //inject alert that post is shared  
+        //inject alert that post is shared
         $success = "Un Verified" && header("refresh:1; url=account_verification.php");
     } else {
         //inject alert that task failed
@@ -128,11 +128,11 @@ require_once('partials/_head.php');
                                     <tbody>
                                         <?php
                                         $ret = "SELECT * FROM `medical_experts` ";
-                                        $stmt = $mysqli->prepare($ret);
-                                        $stmt->execute(); //ok
-                                        $res = $stmt->get_result();
-                                        while ($row = $res->fetch_object()) {
-                                        ?>
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                             <tr>
                                                 <td>
                                                     <a class="badge outline-badge-success" href="view_doc.php?view=<?php echo $row->doc_id;?>">
@@ -144,27 +144,27 @@ require_once('partials/_head.php');
                                                 <td><?php echo $row->doc_phone; ?></td>
                                                 <td>
                                                     <?php
-                                                    if ($row->doc_status == 'Pending') {
-                                                        echo "<span class='badge outline-badge-danger'>$row->doc_status</span>";
-                                                    } else {
-                                                        echo "<span class='badge outline-badge-success'>$row->doc_status</span>";
-                                                    }
-                                                    ?>
+                if ($row->doc_status == 'Pending') {
+                    echo "<span class='badge outline-badge-danger'>$row->doc_status</span>";
+                } else {
+                    echo "<span class='badge outline-badge-success'>$row->doc_status</span>";
+                }
+    ?>
                                                 </td>
 
                                                 <td>
                                                     <?php
-                                                    if ($row->doc_status == 'Pending') {
-                                                        echo "<a class='dropdown-item badge outline-badge-success' href='account_verification.php?verify=$row->doc_id&id=$row->doc_id'>Verify Account</a>";
-                                                    } else {
-                                                        echo "<a class='dropdown-item badge outline-badge-danger' href='account_verification.php?unverify=$row->doc_id&id=$row->doc_id'>Un Verify Account</a>";
-                                                    }
-                                                    ?>
+    if ($row->doc_status == 'Pending') {
+        echo "<a class='dropdown-item badge outline-badge-success' href='account_verification.php?verify=$row->doc_id&id=$row->doc_id'>Verify Account</a>";
+    } else {
+        echo "<a class='dropdown-item badge outline-badge-danger' href='account_verification.php?unverify=$row->doc_id&id=$row->doc_id'>Un Verify Account</a>";
+    }
+    ?>
 
                                                 </td>
                                             </tr>
                                         <?php
-                                        } ?>
+} ?>
 
                                     </tbody>
                                 </table>

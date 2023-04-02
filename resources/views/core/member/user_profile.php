@@ -4,7 +4,6 @@ require_once('configs/config.php');
 require_once('configs/checklogin.php');
 
 if (isset($_POST['change_password'])) {
-
     //Change Password
     $error = 0;
     if (isset($_POST['old_password']) && !empty($_POST['old_password'])) {
@@ -96,13 +95,13 @@ require_once('partials/_head.php');
         <!--  BEGIN SIDEBAR  -->
         <?php
         require_once('partials/_sidebar.php');
-        $member_id = $_SESSION['member_id'];
-        $ret = "SELECT * FROM `members`  WHERE member_id = '$member_id' ";
-        $stmt = $mysqli->prepare($ret);
-        $stmt->execute(); //ok
-        $res = $stmt->get_result();
-        while ($row = $res->fetch_object()) {
-        ?>
+$member_id = $_SESSION['member_id'];
+$ret = "SELECT * FROM `members`  WHERE member_id = '$member_id' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
             <!--  END SIDEBAR  -->
 
             <!--  BEGIN CONTENT AREA  -->
@@ -125,12 +124,12 @@ require_once('partials/_head.php');
                                     </div>
                                     <div class="text-center user-info">
                                         <?php
-                                        if ($row->member_pic == '') {
-                                            echo "<img src='../admin/assets/img/admin/admin.png' class='img-thumbnail img-fluid' alt='avatar'>";
-                                        } else {
-                                            echo "<img src='../admin/assets/img/clients/$row->member_pic' class='img-thumbnail img-fluid' alt='avatar'>";
-                                        }
-                                        ?>
+                                    if ($row->member_pic == '') {
+                                        echo "<img src='../admin/assets/img/admin/admin.png' class='img-thumbnail img-fluid' alt='avatar'>";
+                                    } else {
+                                        echo "<img src='../admin/assets/img/clients/$row->member_pic' class='img-thumbnail img-fluid' alt='avatar'>";
+                                    }
+    ?>
                                         <p class=""><?php echo $row->member_name; ?></p>
                                     </div>
                                     <div class="user-info-list">
@@ -173,16 +172,16 @@ require_once('partials/_head.php');
                                                         <line x1="7" y1="3.5" x2="17" y2="8.5"></line>
                                                     </svg>
                                                     <?php
-                                                    if ($row->member_package == 'Gold Package') {
-                                                        echo "<span class='badge outline-badge-success'>$row->member_package</span>";
-                                                    } elseif ($row->member_package == 'Silver Package') {
-                                                        echo "<span class='badge outline-badge-warning'>$row->member_package</span>";
-                                                    } elseif ($row->member_package == 'Bronze Package') {
-                                                        echo "<span class='badge outline-badge-primary'>$row->member_package</span>";
-                                                    } else {
-                                                        echo "<span class='badge outline-badge-danger'>$row->member_package</span>";
-                                                    }
-                                                    ?>
+                if ($row->member_package == 'Gold Package') {
+                    echo "<span class='badge outline-badge-success'>$row->member_package</span>";
+                } elseif ($row->member_package == 'Silver Package') {
+                    echo "<span class='badge outline-badge-warning'>$row->member_package</span>";
+                } elseif ($row->member_package == 'Bronze Package') {
+                    echo "<span class='badge outline-badge-primary'>$row->member_package</span>";
+                } else {
+                    echo "<span class='badge outline-badge-danger'>$row->member_package</span>";
+                }
+    ?>
                                                 </li>
                                                 <!-- <li class="contacts-block__item">
                                                     <ul class="list-inline">
@@ -230,11 +229,11 @@ require_once('partials/_head.php');
                                         <div class="timeline-alter">
                                             <?php
                                             $ret = "SELECT * FROM `consultations`  WHERE member_id = '$member_id' ";
-                                            $stmt = $mysqli->prepare($ret);
-                                            $stmt->execute(); //ok
-                                            $res = $stmt->get_result();
-                                            while ($row = $res->fetch_object()) {
-                                            ?>
+    $stmt = $mysqli->prepare($ret);
+    $stmt->execute(); //ok
+    $res = $stmt->get_result();
+    while ($row = $res->fetch_object()) {
+        ?>
                                                 <div class="item-timeline">
                                                     <div class="t-meta-date">
                                                         <p class=""><?php echo date('d M Y g:i', strtotime($row->created_at)); ?></p>
@@ -280,7 +279,7 @@ require_once('partials/_head.php');
     </div>
 <?php
             require_once('partials/_scripts.php');
-        }
+}
 ?>
 <!-- END GLOBAL MANDATORY SCRIPTS -->
 </body>

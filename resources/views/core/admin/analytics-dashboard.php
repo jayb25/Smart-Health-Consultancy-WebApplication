@@ -389,11 +389,11 @@ require_once('partials/_head.php');
                                     <div class="timeline-line">
                                         <?php
                                         $ret = "SELECT * FROM `membership_payments` WHERE status ='Confirmed' ORDER BY `membership_payments`.`created_at` DESC  ";
-                                        $stmt = $mysqli->prepare($ret);
-                                        $stmt->execute(); //ok
-                                        $res = $stmt->get_result();
-                                        while ($row = $res->fetch_object()) {
-                                        ?>
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                             <div class="item-timeline timeline-new">
                                                 <div class="t-dot">
                                                     <div class="t-primary">
@@ -417,7 +417,7 @@ require_once('partials/_head.php');
                                                 </div>
                                             </div>
                                         <?php
-                                        } ?>
+} ?>
                                     </div>
                                 </div>
                             </div>

@@ -7,13 +7,12 @@ include('configs/codeGen.php');
 check_login();
 
 if (isset($_POST['update'])) {
-
     $update = $_GET['update'];
     $consul_details = $_POST['consul_details'];
 
     $query = "UPDATE  consultations SET consul_details =? WHERE consul_id =?";
     $stmt = $mysqli->prepare($query);
-    $rc = $stmt->bind_param('ss',  $consul_details, $update);
+    $rc = $stmt->bind_param('ss', $consul_details, $update);
     $stmt->execute();
     if ($stmt) {
         $success = "Success" && header("refresh:1; url=manage_consultations.php");
@@ -32,7 +31,7 @@ require_once('partials/_head.php');
     <!--  BEGIN NAVBAR  -->
     <?php
     require_once('partials/_nav.php');
-    ?>
+?>
     <!--  END NAVBAR  -->
 
     <!--  BEGIN NAVBAR  -->
@@ -72,14 +71,14 @@ require_once('partials/_head.php');
 
         <!--  BEGIN SIDEBAR  -->
         <?php
-        require_once('partials/_sidebar.php');
-        $update = $_GET['update'];
-        $ret = "SELECT * FROM `consultations` WHERE consul_id = '$update' ";
-        $stmt = $mysqli->prepare($ret);
-        $stmt->execute(); //ok
-        $res = $stmt->get_result();
-        while ($consul = $res->fetch_object()) {
-        ?>
+    require_once('partials/_sidebar.php');
+$update = $_GET['update'];
+$ret = "SELECT * FROM `consultations` WHERE consul_id = '$update' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($consul = $res->fetch_object()) {
+    ?>
             <!--  END SIDEBAR  -->
 
             <!--  BEGIN CONTENT AREA  -->
@@ -104,15 +103,15 @@ require_once('partials/_head.php');
                     </div>
                 </div>
                 <?php
-                require_once('partials/_footer.php'); ?>
+            require_once('partials/_footer.php'); ?>
             </div>
             <!--  END CONTENT AREA  -->
     </div>
     <!-- END MAIN CONTAINER -->
 
 <?php
-            require_once('partials/_scripts.php');
-        }
+        require_once('partials/_scripts.php');
+}
 ?>
 </body>
 

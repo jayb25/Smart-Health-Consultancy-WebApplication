@@ -49,13 +49,13 @@ require_once('partials/_head.php');
         <!--  BEGIN SIDEBAR  -->
         <?php
         require_once('partials/_sidebar.php');
-        $view = $_GET['view'];
-        $ret = "SELECT * FROM `members`  WHERE member_id = '$view' ";
-        $stmt = $mysqli->prepare($ret);
-        $stmt->execute(); //ok
-        $res = $stmt->get_result();
-        while ($row = $res->fetch_object()) {
-        ?>
+$view = $_GET['view'];
+$ret = "SELECT * FROM `members`  WHERE member_id = '$view' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
             <!--  END SIDEBAR  -->
 
             <!--  BEGIN CONTENT AREA  -->
@@ -78,12 +78,12 @@ require_once('partials/_head.php');
                                     </div>
                                     <div class="text-center user-info">
                                         <?php
-                                        if ($row->member_pic == '') {
-                                            echo "<img src='assets/img/admin/admin.png' class='img-thumbnail img-fluid' alt='avatar'>";
-                                        } else {
-                                            echo "<img src='assets/img/clients/$row->member_pic' class='img-thumbnail img-fluid' alt='avatar'>";
-                                        }
-                                        ?>
+                                    if ($row->member_pic == '') {
+                                        echo "<img src='assets/img/admin/admin.png' class='img-thumbnail img-fluid' alt='avatar'>";
+                                    } else {
+                                        echo "<img src='assets/img/clients/$row->member_pic' class='img-thumbnail img-fluid' alt='avatar'>";
+                                    }
+    ?>
                                         <p class=""><?php echo $row->member_name; ?></p>
                                     </div>
                                     <div class="user-info-list">
@@ -163,12 +163,12 @@ require_once('partials/_head.php');
                                         <h3 class="">Consultation History</h3>
                                         <div class="timeline-alter">
                                             <?php
-                                            $ret = "SELECT * FROM `consultations`  WHERE member_id = '$view' ";
-                                            $stmt = $mysqli->prepare($ret);
-                                            $stmt->execute(); //ok
-                                            $res = $stmt->get_result();
-                                            while ($row = $res->fetch_object()) {
-                                            ?>
+        $ret = "SELECT * FROM `consultations`  WHERE member_id = '$view' ";
+    $stmt = $mysqli->prepare($ret);
+    $stmt->execute(); //ok
+    $res = $stmt->get_result();
+    while ($row = $res->fetch_object()) {
+        ?>
                                                 <div class="item-timeline">
                                                     <div class="t-meta-date">
                                                         <p class=""><?php echo date('d M Y g:i', strtotime($row->created_at));?></p>
@@ -194,7 +194,7 @@ require_once('partials/_head.php');
     </div>
 <?php
             require_once('partials/_scripts.php');
-        }
+}
 ?>
 <!-- END GLOBAL MANDATORY SCRIPTS -->
 </body>

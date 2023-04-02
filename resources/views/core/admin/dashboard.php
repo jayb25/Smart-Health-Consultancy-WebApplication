@@ -121,11 +121,11 @@ require_once('partials/_head.php');
                             <div class="widget-content">
                                 <?php
                                 $ret = "SELECT * FROM `membership_payments` WHERE status ='Confirmed' ORDER BY `membership_payments`.`created_at` DESC LIMIT 4  ";
-                                $stmt = $mysqli->prepare($ret);
-                                $stmt->execute(); //ok
-                                $res = $stmt->get_result();
-                                while ($row = $res->fetch_object()) {
-                                ?>
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                     <div class="transactions-list">
                                         <div class="t-item">
                                             <div class="t-company-name">
@@ -221,12 +221,12 @@ require_once('partials/_head.php');
                                         </thead>
                                         <tbody>
                                             <?php
-                                            $ret = "SELECT * FROM `medical_experts` ";
-                                            $stmt = $mysqli->prepare($ret);
-                                            $stmt->execute(); //ok
-                                            $res = $stmt->get_result();
-                                            while ($row = $res->fetch_object()) {
-                                            ?>
+                $ret = "SELECT * FROM `medical_experts` ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                                 <tr>
                                                     <td>
                                                         <div class="td-content product-brand"><?php echo $row->doc_number; ?></div>
@@ -243,13 +243,13 @@ require_once('partials/_head.php');
                                                     </td>
                                                     <td>
                                                         <?php
-                                                        if ($row->doc_status == 'Pending') {
-                                                            echo "<div class='td-content'><span class='badge outline-badge-danger'>$row->doc_status</span></div>";
-                                                        } else {
-                                                            echo "<div class='td-content'><span class='badge outline-badge-success'>$row->doc_status</span></div>";
-                                                        }
+                if ($row->doc_status == 'Pending') {
+                    echo "<div class='td-content'><span class='badge outline-badge-danger'>$row->doc_status</span></div>";
+                } else {
+                    echo "<div class='td-content'><span class='badge outline-badge-success'>$row->doc_status</span></div>";
+                }
 
-                                                        ?>
+    ?>
                                                     </td>
                                                 </tr>
                                             <?php } ?>
@@ -287,11 +287,11 @@ require_once('partials/_head.php');
                                         <tbody>
                                             <?php
                                             $ret = "SELECT * FROM `packages` ";
-                                            $stmt = $mysqli->prepare($ret);
-                                            $stmt->execute(); //ok
-                                            $res = $stmt->get_result();
-                                            while ($row = $res->fetch_object()) {
-                                            ?>
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                                 <tr>
                                                     <td>
                                                         <div class="td-content"><span class="badge outline-badge-success"><?php echo $row->package_id; ?></span></div>
@@ -301,14 +301,14 @@ require_once('partials/_head.php');
                                                     </td>
                                                     <td>
                                                         <?php
-                                                        $MP = $row->package_name;
-                                                        $query = "SELECT COUNT(*) FROM `members` WHERE member_package = '$MP' ";
-                                                        $stmt = $mysqli->prepare($query);
-                                                        $stmt->execute();
-                                                        $stmt->bind_result($members);
-                                                        $stmt->fetch();
-                                                        $stmt->close();
-                                                        ?>
+                $MP = $row->package_name;
+    $query = "SELECT COUNT(*) FROM `members` WHERE member_package = '$MP' ";
+    $stmt = $mysqli->prepare($query);
+    $stmt->execute();
+    $stmt->bind_result($members);
+    $stmt->fetch();
+    $stmt->close();
+    ?>
                                                         <div class="td-content"><span class="discount-pricing"><?php echo $members; ?> </span></div>
                                                     </td>
                                                 </tr>

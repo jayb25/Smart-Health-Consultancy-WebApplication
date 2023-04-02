@@ -107,11 +107,11 @@ require_once('partials/_head.php');
                                     <tbody>
                                         <?php
                                         $ret = "SELECT * FROM `prescriptions` ";
-                                        $stmt = $mysqli->prepare($ret);
-                                        $stmt->execute(); //ok
-                                        $res = $stmt->get_result();
-                                        while ($row = $res->fetch_object()) {
-                                        ?>
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                             <tr>
                                                 <td>
                                                     <a class="badge outline-badge-success" href="view_prescription.php?view=<?php echo $row->pre_id; ?>">
@@ -126,7 +126,7 @@ require_once('partials/_head.php');
                                                 </td>
                                             </tr>
                                         <?php
-                                        } ?>
+} ?>
                                     </tbody>
                                 </table>
                             </div>

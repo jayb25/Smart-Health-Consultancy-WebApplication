@@ -7,7 +7,6 @@ include('configs/codeGen.php');
 check_login();
 
 if (isset($_POST['update'])) {
-
     $update = $_GET['update'];
     $doc_id = $_POST['doc_id'];
     $doc_name = $_POST['doc_name'];
@@ -35,7 +34,7 @@ require_once('partials/_head.php');
     <!--  BEGIN NAVBAR  -->
     <?php
     require_once('partials/_nav.php');
-    ?>
+?>
     <!--  END NAVBAR  -->
 
     <!--  BEGIN NAVBAR  -->
@@ -75,14 +74,14 @@ require_once('partials/_head.php');
 
         <!--  BEGIN SIDEBAR  -->
         <?php
-        require_once('partials/_sidebar.php');
-        $update = $_GET['update'];
-        $ret = "SELECT * FROM `consultations` WHERE consul_id = '$update' ";
-        $stmt = $mysqli->prepare($ret);
-        $stmt->execute(); //ok
-        $res = $stmt->get_result();
-        while ($consul = $res->fetch_object()) {
-        ?>
+    require_once('partials/_sidebar.php');
+$update = $_GET['update'];
+$ret = "SELECT * FROM `consultations` WHERE consul_id = '$update' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($consul = $res->fetch_object()) {
+    ?>
             <!--  END SIDEBAR  -->
 
             <!--  BEGIN CONTENT AREA  -->
@@ -106,15 +105,15 @@ require_once('partials/_head.php');
                                             <select id="docNumber" onChange="getDoctorDetails(this.value)" class='form-control basic' name="package_name" id="">
                                                 <option selected>Select Doctor Number</option>
                                                 <?php
-                                                $ret = "SELECT * FROM `medical_experts` WHERE doc_status != 'Pending' ";
-                                                $stmt = $mysqli->prepare($ret);
-                                                $stmt->execute(); //ok
-                                                $res = $stmt->get_result();
-                                                while ($row = $res->fetch_object()) {
-                                                ?>
+                                            $ret = "SELECT * FROM `medical_experts` WHERE doc_status != 'Pending' ";
+    $stmt = $mysqli->prepare($ret);
+    $stmt->execute(); //ok
+    $res = $stmt->get_result();
+    while ($row = $res->fetch_object()) {
+        ?>
                                                     <option><?php echo $row->doc_number; ?></option>
                                                 <?php
-                                                } ?>
+    } ?>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-4">
@@ -146,7 +145,7 @@ require_once('partials/_head.php');
 
 <?php
             require_once('partials/_scripts.php');
-        }
+}
 ?>
 </body>
 

@@ -109,12 +109,12 @@ require_once('partials/_head.php');
                                     <tbody>
                                         <?php
                                         $member_id = $_SESSION['member_id'];
-                                        $ret = "SELECT * FROM `feedbacks` WHERE type ='Complain' AND member_id ='$member_id' ";
-                                        $stmt = $mysqli->prepare($ret);
-                                        $stmt->execute(); //ok
-                                        $res = $stmt->get_result();
-                                        while ($row = $res->fetch_object()) {
-                                        ?>
+$ret = "SELECT * FROM `feedbacks` WHERE type ='Complain' AND member_id ='$member_id' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute(); //ok
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
                                             <tr>
                                                 <td>
                                                     <a class="badge outline-badge-success" href="view_complain.php?view=<?php echo $row->f_id; ?>">
@@ -129,7 +129,7 @@ require_once('partials/_head.php');
                                                 </td>
                                             </tr>
                                         <?php
-                                        } ?>
+} ?>
                                     </tbody>
                                 </table>
                             </div>

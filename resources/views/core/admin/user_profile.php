@@ -10,7 +10,7 @@ if (isset($_POST['update_profile'])) {
 
     $query = "UPDATE  admin  SET admin_name =?, admin_email =?  WHERE admin_id=?";
     $stmt = $mysqli->prepare($query);
-    $rc = $stmt->bind_param('sss',  $admin_name, $admin_email, $admin_id);
+    $rc = $stmt->bind_param('sss', $admin_name, $admin_email, $admin_id);
     $stmt->execute();
     if ($stmt) {
         $success = "Profile Updated" && header("refresh:1; url=user_profile.php");
@@ -21,7 +21,6 @@ if (isset($_POST['update_profile'])) {
 
 
 if (isset($_POST['change_password'])) {
-
     //Change Password
     $error = 0;
     if (isset($_POST['old_password']) && !empty($_POST['old_password'])) {
@@ -117,13 +116,13 @@ require_once('partials/_head.php');
         <!--  BEGIN SIDEBAR  -->
         <?php
         require_once('partials/_sidebar.php');
-        $admin_id = $_SESSION['admin_id'];
-        $ret = "SELECT * FROM  admin WHERE admin_id = '$admin_id' ";
-        $stmt = $mysqli->prepare($ret);
-        $stmt->execute();
-        $res = $stmt->get_result();
-        while ($row = $res->fetch_object()) {
-        ?>
+$admin_id = $_SESSION['admin_id'];
+$ret = "SELECT * FROM  admin WHERE admin_id = '$admin_id' ";
+$stmt = $mysqli->prepare($ret);
+$stmt->execute();
+$res = $stmt->get_result();
+while ($row = $res->fetch_object()) {
+    ?>
             <!--  END SIDEBAR  -->
 
             <!--  BEGIN CONTENT AREA  -->
@@ -224,7 +223,7 @@ require_once('partials/_head.php');
     </div>
     <!-- END MAIN CONTAINER -->
 <?php require_once('partials/_scripts.php');
-        } ?>
+} ?>
 
 </body>
 
